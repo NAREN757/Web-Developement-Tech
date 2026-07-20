@@ -20,3 +20,38 @@ h1 {
 .downvote {
     background-color: lightcoral;
 }
+
+/* Descendent selector */
+
+p a {
+    color:blue;
+}
+
+nav ul li {
+    color: red;
+}
+
+p + h3 {
+    text-decoration: underline;
+}
+
+div > input {
+    background-color: aquamarine;
+}
+
+input[type="text"] {
+    color: blueviolet;
+}
+
+input[type="password"] {
+    color: orange;
+}
+
+h3:hover {
+    text-decoration: none;
+}
+
+button:active {
+    background-color: black;
+    color: white;
+}
