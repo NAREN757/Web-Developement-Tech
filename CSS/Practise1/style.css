@@ -1,0 +1,22 @@
+h3 {
+    color:brown;
+}
+
+h1 {
+    color: brown;
+}
+
+#login {
+    background-color:white;
+}
+
+#signup {
+    background-color: lightgreen;
+}
+
+.upvote {
+    background-color: greenyellow;
+}
+.downvote {
+    background-color: lightcoral;
+}
