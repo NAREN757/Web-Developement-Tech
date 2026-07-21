@@ -55,3 +55,7 @@ button:active {
     background-color: black;
     color: white;
 }
+
+h1::first-letter {
+    color: black;
+}
