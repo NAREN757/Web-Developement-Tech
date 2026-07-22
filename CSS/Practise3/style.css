@@ -1,0 +1,54 @@
+#trans {
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+    transition: 1s;
+    transition-delay: 0.5s;
+    margin: auto;
+}
+
+#trans:hover {
+    background-color:burlywood;
+    border-radius: 50%;
+}
+
+section {
+    margin-top: 100px;
+}
+
+div {
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    background-color: #D99B7F;
+    margin: 10px;
+}
+
+div:nth-last-of-type(2n) {
+    background-color:#464858;
+}
+
+div:nth-of-type(3n) {
+    background-color: #A56F63;
+}
+
+#one {
+    transform: rotate(180deg);
+    box-shadow: 2px 2px 8px #464858;
+}
+
+#two {
+    transform: scale(0.8);
+}
+
+#three {
+    transform: translate(150px,0px);
+}
+
+#four {
+    transform: skew(-15deg);
+}
+
+#five {
+    transform: rotate(45deg) skew(10deg) scale(0.8) translate(50px,30px);
+}
