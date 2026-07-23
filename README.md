@@ -5,7 +5,7 @@ This repository contains my practice projects, notes, and experiments as I learn
 ## Technologies
 
 - HTML5
-- CSS
+- CSS3
 - More to come...
 
 ## Purpose
