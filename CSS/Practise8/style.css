@@ -1,0 +1,40 @@
+.box {
+    height: 100px;
+    width: 200px;
+    background-color: pink;
+    /* animation-name: widthani;
+    animation-duration: 8s;
+    animation-timing-function:ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 3;
+    animation-direction: normal; */
+
+    animation: widthani 8s ease-in-out 0s 3 normal;
+}
+
+@keyframes fontanimation{
+    from {
+        font-size: 20px;
+    }
+    to {
+        font-size: 40px;
+    }
+}
+
+@keyframes colorchange {
+    from {
+        background-color: pink;
+    }
+    to {
+        background-color: palevioletred;
+    }
+}
+
+@keyframes widthani {
+    form {
+        width: 200px;
+    }
+    to {
+        width: 800px;
+    }
+}

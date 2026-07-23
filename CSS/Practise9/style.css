@@ -1,0 +1,52 @@
+h1 {
+    background-color: yellow;
+    border: 2px solid black;
+}
+
+/* Applies when viewport width is exactly 400px */
+@media (width: 400px) {
+
+    h1 {
+        background-color: red;
+        color: white;
+    }
+
+    div {
+        height: 100px;
+        width: 100px;
+        background-color: blue;
+    }
+}
+
+/* Applies when viewport width is 700px or more */
+@media (min-width: 700px) {
+
+    h1 {
+        background-color: greenyellow;
+    }
+}
+
+/* Applies when viewport width is 200px or less */
+@media (max-width: 200px) {
+
+    h1 {
+        background-color: pink;
+    }
+}
+
+/* Applies when viewport width is between 200px and 300px */
+@media (min-width: 200px) and (max-width: 300px) {
+
+    h1 {
+        background-color: magenta;
+    }
+}
+
+@media (orientation: landscape) {
+
+    h1 {
+        background-color: aqua;
+        color: brown;
+    }
+
+}
