@@ -6,6 +6,7 @@ This repository contains my practice projects, notes, and experiments as I learn
 
 - HTML5
 - CSS3
+- JAVASCRIPT
 - More to come...
 
 ## Purpose
