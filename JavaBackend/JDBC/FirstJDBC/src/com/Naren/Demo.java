@@ -1,5 +1,7 @@
+package com.Naren;
+
 public class Demo {
-    public static void main(String[] args) {
+    static void main(String[] args) {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
