@@ -1,0 +1,24 @@
+
+### `app.js`
+
+* Added `highScore` variable using `localStorage`.
+* Added `highScoreText` to display the highest score.
+* Added `startGame()` function for code reusability.
+* Added `touchstart` event for mobile support.
+* Fixed random color selection using `btns.length`.
+* Updated `checkAns()` to save and display the high score.
+* Updated game over message for desktop and mobile users.
+
+### `index.html`
+
+* Added `<h3 id="highScore">` to display the highest score.
+* Updated the instruction text to **"Press Any Key or Tap Anywhere To Start"**.
+
+### `style.css`
+
+* Added styling for the High Score (`h3`).
+* Added responsive media queries for tablets (`768px`) and mobiles (`480px`).
+* Reduced button size on smaller screens.
+* Added hover animation using `transform: scale(1.05)`.
+* Improved flash animation with a slight scaling effect.
+* Improved spacing and mobile layout.

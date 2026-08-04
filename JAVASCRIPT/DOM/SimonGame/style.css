@@ -1,0 +1,45 @@
+body {
+    text-align: center;
+    color: azure;
+    background-color:#1C2128;
+    font-family:  "Lato", sans-serif;
+}
+
+.btn {
+    height: 200px;
+    width: 200px;
+    border-radius: 20%;
+    border: 2.5px solid black;
+    margin: 2rem;
+    color: black;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.yellow {
+    background-color:rgb(165, 214, 167);
+}
+.red {
+    background-color:rgb(230, 57, 70);
+}
+.green {
+    background-color:#44A1A4;
+}
+.purple {
+    background-color: rgb(255, 154, 0);
+}
+
+.flash {
+    background-color: white;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+h1{
+    font-size:xxx-large;
+}
