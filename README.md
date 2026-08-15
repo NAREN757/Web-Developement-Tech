@@ -7,6 +7,9 @@ This repository contains my practice projects, notes, and experiments as I learn
 - HTML5
 - CSS3
 - JAVASCRIPT
+- JAVABACKEND
+- NODE JS
+- REST API
 - More to come...
 
 ## Purpose
@@ -24,8 +27,9 @@ The goal of this repository is to:
 ├── HTML/
 ├── CSS/
 ├── JavaScript/
-├── React/
-└── Projects/
+├── JavaBackend/
+├── NodeJS/
+├── RESTapi/
 ```
 
 ## Note

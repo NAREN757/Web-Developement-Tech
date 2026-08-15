@@ -1,0 +1,14 @@
+h1 {
+    color: maroon;
+    text-align: center;
+}
+
+.post {
+    background-color: blanchedalmond;
+    border-radius: 8px;
+}
+
+.user {
+    font-style: italic;
+}
+
