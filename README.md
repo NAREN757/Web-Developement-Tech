@@ -10,6 +10,7 @@ This repository contains my practice projects, notes, and experiments as I learn
 - JAVABACKEND
 - NODE JS
 - REST API
+- MYSQL
 - More to come...
 
 ## Purpose
