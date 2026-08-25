@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Navbar */
+.navbar {
+    height: 5rem;
+    background-color: #E3F2FD;
+}
+
+/* Font Awesome */
+.fa-solid {
+    color: #0D47A1;
+    font-size: 1.5rem;
+}
+
+/* Navbar links */
+.nav-link {
+    color: #222222 !important;
+}
+
+/* Cards */
+.card {
+    border: none !important;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    position: relative;
+}
+
+/* Game image */
+.card-img-top {
+    border-radius: 0.6rem !important;
+    width: 16rem !important;
+    height: 16rem !important;
+    object-fit: cover !important;
+    transition: all 0.15s ease;
+}
+
+/* Card body */
+.card-body {
+    padding: 0.7rem !important;
+}
+
+/* Game title */
+.card-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #222;
+    text-decoration: none;
+}
+
+/* Price */
+.card-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #444;
+}
+
+/* Link */
+.listing-link {
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover image */
+.card:hover .card-img-top {
+    outline: 2.8px solid #091540;
+    outline-offset: 2px;
+}
+
+/* Hover title */
+.card:hover .card-title  {
+    text-decoration: underline;
+}
+
+/* Footer */
+.f-info-links a {
+    text-decoration: none;
+    color: white;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-links,
+.f-info-socials {
+    width: 100%;
+}
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin-top: 0.9rem;
+    margin-right: 0.8rem;
+    color: white;
+}
+
+.pf {
+    color: white;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #0070CC;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+    align-items: space-evenly;
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16rem;
+    height: 16rem;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0.6rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.card:hover .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.35);
+    opacity: 0.6;
+}
