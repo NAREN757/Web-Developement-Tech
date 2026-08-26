@@ -12,7 +12,7 @@ body {
 /* Navbar */
 .navbar {
   height: 5rem;
-  background-color: #e3f2fd;
+  background-color: white;
 }
 
 /* Font Awesome */
@@ -144,4 +144,32 @@ body {
 .edit-btn {
   background-color: #0d47a1 !important;
   border: none !important;
+}
+
+.showcard {
+  width: 40rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.showcard .card-img-top {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 40rem;
+  object-fit: contain !important;
+}
+
+.btns {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.btns form {
+  margin: 0;
+}
+
+.gdt {
+  text-align: center;
 }
