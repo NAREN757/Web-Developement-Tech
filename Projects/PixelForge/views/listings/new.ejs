@@ -1,26 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelForge</title>
-</head>
+<% layout('/layouts/boilerplate') -%>
 <body>
-    <h3>Create a New Listing</h3>
-    <form method="post" action="/listings">
-      <input name="listing[title]" placeholder="enter title" type="text">
-      <br><br>
-      <textarea name="listing[description]" placeholder="enter description type="text"></textarea>
-      <br><br>
-      <input name="listing[image]" placeholder="enter image url/Link" type="text">
-      <br><br>
-      <input name="listing[price]" placeholder="enter price" type="number">
-      <br><br>
-      <input name="listing[developer]" placeholder="enter developer" type="text">
-      <br><br>
-      <input name="listing[genre]" placeholder="enter genre" type="text">
-      <br><br>
-      <button>Add</button>
-    </form>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <br><br>
+  <h3>Add a New Game</h3>
+  <br>
+  <form method="post" action="/listings">
+    <div class="mb-3">
+      <label for="title" class="form-label">Game Title</label>
+      <input
+        name="listing[title]"
+        placeholder="Enter Game Title"
+        type="text"
+        class="form-control"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label" >Game Overview</label>
+      <textarea
+        placeholder="Describe the game, features, and gameplay"
+        name="listing[description]"
+        type="text"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Cover Art</label>
+      <input
+        name="listing[image]"
+        placeholder="Paste game cover image URL"
+        type="text"
+        class="form-control"
+      />
+    </div>
+
+    <div class="row">
+        <div class="mb-3 col-md-4">
+      <label for="price" class="form-label">Price</label>
+      <input
+        name="listing[price]"
+        placeholder="Enter game price"
+        type="number"
+        class="form-control"
+        />
+        </div>
+
+         <div class="mb-3 col-md-8">
+      <label for="genre" class="form-label">Game Genre</label>
+      <input
+        name="listing[genre]"
+        placeholder="Enter game genre"
+        type="text"
+        class="form-control"
+      />
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+      <label for="developer" class="form-label">Development Studio</label>
+      <input
+        name="listing[developer]"
+        placeholder="Enter developer or studio name"
+        type="text"
+        class="form-control"
+      />
+    </div>
+
+    <br>
+    <button class="btn btn-dark add-btn">Add</button>
+    <br>
+  </form>
 </body>
-</html>
+</div>
+</div>
