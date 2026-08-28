@@ -5,6 +5,7 @@ const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const wrapAsync = require("./utils/wrapAsync.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/pixelforge";
 
@@ -25,7 +26,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
-app.use(express.static(path.join(__dirname,"/public")));
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/", (req, res) => {
   res.send("Hell, I am root");
@@ -49,12 +50,13 @@ app.get("/listings/:id", async (req, res) => {
   res.render("listings/show.ejs", { listing });
 });
 
-//Create Route
-app.post("/listings", async (req, res) => {
-  const newListing = new Listing(req.body.listing);
-  await newListing.save();
-  res.redirect("/listings");
-});
+// Create Route
+app.post("/listings",wrapAsync(async (req, res, next) => {
+    const newListing = new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
+  }),
+);
 
 //Edit Route
 app.get("/listings/:id/edit", async (req, res) => {
@@ -64,19 +66,19 @@ app.get("/listings/:id/edit", async (req, res) => {
 });
 
 //Update Route
-app.put("/listings/:id",async(req,res) => {
-    let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, {...req.body.listing});
-    res.redirect(`/listings/${id}`);
-})
+app.put("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  res.redirect(`/listings/${id}`);
+});
 
 //Delete Route
-app.delete("/listings/:id",async(req,res) => {
-    let {id} = req.params;
-    let deletedListing = await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
-    res.redirect("/listings");
-})
+app.delete("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  let deletedListing = await Listing.findByIdAndDelete(id);
+  console.log(deletedListing);
+  res.redirect("/listings");
+});
 
 // app.get("/testListing", async(req, res) => {
 //   let sampleListing = new Listing({
@@ -91,6 +93,10 @@ app.delete("/listings/:id",async(req,res) => {
 //   console.log("Sample was Saved");
 //   res.send("Successfull");
 // });
+
+app.use((err, res, req, next) => {
+  res.send("Something Went wrong!");
+});
 
 app.listen(3000, () => {
   console.log("Server is listening to port 3000");

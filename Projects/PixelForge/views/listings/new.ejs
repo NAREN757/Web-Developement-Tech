@@ -5,7 +5,7 @@
             <br><br>
   <h3>Add a New Game</h3>
   <br>
-  <form method="post" action="/listings">
+  <form method="post" action="/listings" novalidate class="needs-validation">
     <div class="mb-3">
       <label for="title" class="form-label">Game Title</label>
       <input
@@ -13,7 +13,12 @@
         placeholder="Enter Game Title"
         type="text"
         class="form-control"
+        required
       />
+      <div class="valid-feedback">Title looks Good!</div>
+       <div class="invalid-feedback">
+        Game title is required.
+      </div>
     </div>
 
     <div class="mb-3">
@@ -23,7 +28,12 @@
         name="listing[description]"
         type="text"
         class="form-control"
+        required
       ></textarea>
+      <div class="valid-feedback">Overview looks Good!</div>
+       <div class="invalid-feedback">
+        Please provide a brief description of the game.
+      </div>
     </div>
 
     <div class="mb-3">
@@ -44,7 +54,12 @@
         placeholder="Enter game price"
         type="number"
         class="form-control"
+        required
         />
+        <div class="valid-feedback">Price looks Good!</div>
+         <div class="invalid-feedback">
+        Please enter a valid price.
+      </div>
         </div>
 
          <div class="mb-3 col-md-8">
@@ -54,7 +69,12 @@
         placeholder="Enter game genre"
         type="text"
         class="form-control"
+        required
       />
+      <div class="valid-feedback">Genre looks Good!</div>
+       <div class="invalid-feedback">
+        Game genre is required.
+      </div>
         </div>
 
     </div>
@@ -66,12 +86,17 @@
         placeholder="Enter developer or studio name"
         type="text"
         class="form-control"
+        required
       />
+      <div class="valid-feedback">Studio looks Good!</div>
+       <div class="invalid-feedback">
+        Development studio is required.
+      </div>
     </div>
-
-    <br>
     <button class="btn btn-dark add-btn">Add</button>
     <br>
+     <br>
+      <br>
   </form>
 </body>
 </div>

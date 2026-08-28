@@ -5,37 +5,61 @@
             <br><br>
     <h3>Edit Game Details</h3>
     <br>
-    <form method="post" action="/listings/<%= listing._id %>?_method=PUT">
+    <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
         <div class="mb-3">
             <label for="title" class="form-label">Game Title</label>
-            <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control">
+            <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required>
+             <div class="valid-feedback">Title looks Good!</div>
+       <div class="invalid-feedback">
+        Game title is required.
+      </div>
         </div>
 
       <div class="mb-3">
         <label for="description" class="form-label" >Game Overview</label>
-        <textarea name="listing[description]" class="form-control"><%= listing.description%></textarea>
+        <textarea name="listing[description]" class="form-control" required><%= listing.description%></textarea>
+        <div class="valid-feedback">Overview looks Good!</div>
+       <div class="invalid-feedback">
+        Please provide a brief description of the game.
+      </div>
       </div>
 
       <div class="mb-3">
         <label for="image" class="form-label">Cover Art</label>
-        <input name="listing[image]" value="<%= listing.image %>" type="text" class="form-control">
+        <input name="listing[image]" value="<%= listing.image %>" type="text" class="form-control" required>
+        <div class="valid-feedback">URL looks Good!</div>
+       <div class="invalid-feedback">
+        Please provide a Valid URL for cover art.
+      </div>
       </div>
 
     <div class="row">
       <div class="mb-3 col-md-4">
         <label for="price" class="form-label">Price</label>
-        <input name="listing[price]" value="<%= listing.price %>"" type="number" class="form-control">
+        <input name="listing[price]" value="<%= listing.price %>"" type="number" class="form-control" required>
+        <div class="valid-feedback">Price looks Good!</div>
+         <div class="invalid-feedback">
+        Please enter a valid price.
+      </div>
       </div>
       
        <div class="mb-3 col-md-8">
         <label for="genre" class="form-label">Game Genre</label>
-        <input name="listing[genre]" value="<%= listing.genre %>" type="text" class="form-control">
+        <input name="listing[genre]" value="<%= listing.genre %>" type="text" class="form-control" required>
+        <div class="valid-feedback">Genre looks Good!</div>
+       <div class="invalid-feedback">
+        Game genre is required.
+      </div>
       </div>
     </div>
 
     <div class="mb-3">
         <label for="developer" class="form-label">Development Studio</label>
-      <input name="listing[developer]" value="<%= listing.developer %> "type="text" class="form-control">
+      <input name="listing[developer]" value="<%= listing.developer %> "type="text" class="form-control" required>
+      <div class="valid-feedback">Studio looks Good!</div>
+       <div class="invalid-feedback">
+        Development studio is required.
+      </div>
     </div>
       <br>
       <button class="btn btn-dark edit-btn">Edit</button>
