@@ -173,3 +173,23 @@ body {
 .gdt {
   text-align: center;
 }
+
+.allgames {
+  font-family:Arial,sans-serif;
+  font-size : 36.75px;
+  font-weight: 300;
+}
+
+.pagination .page-link {
+    color: #013698;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #013698;
+    border-color: #013698;
+}
+
+.pagination .page-link:hover {
+    color: #013698;
+}
+
