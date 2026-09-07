@@ -4,25 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63ff9855-3cfc-4beb-bbf3-0e98aeb8d801" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Naren/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Naren/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/Naren/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Projects/PixelForge/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Projects/PixelForge/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Projects/PixelForge/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Projects/PixelForge/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Projects/PixelForge/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Projects/PixelForge/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Projects/PixelForge/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Projects/PixelForge/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Projects/PixelForge/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Projects/PixelForge/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Projects/PixelForge/views/listings/edit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Projects/PixelForge/views/listings/edit.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Projects/PixelForge/views/listings/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Projects/PixelForge/views/listings/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Projects/PixelForge/views/listings/show.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Projects/PixelForge/views/listings/show.ejs" afterDir="false" />
+    <list default="true" id="63ff9855-3cfc-4beb-bbf3-0e98aeb8d801" name="Changes" comment="project">
+      <change afterPath="$PROJECT_DIR$/../NewMavenProject/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NewMavenProject/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NewMavenProject/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NewMavenProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NewMavenProject/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,9 +77,15 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true"
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -108,5 +106,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="project" />
+    <option name="LAST_COMMIT_MESSAGE" value="project" />
   </component>
 </project>

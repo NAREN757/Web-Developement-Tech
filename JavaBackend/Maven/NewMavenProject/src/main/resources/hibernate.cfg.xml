@@ -8,13 +8,14 @@
 
     <session-factory>
 
-        <!-- Database Connection -->
+        <!-- MySQL Connection -->
+
         <property name="hibernate.connection.driver_class">
             com.mysql.cj.jdbc.Driver
         </property>
 
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/mapfeb
+            jdbc:mysql://localhost:3306/kodnest
         </property>
 
         <property name="hibernate.connection.username">
@@ -25,10 +26,22 @@
             abhi
         </property>
 
-        <!-- Hibernate Settings -->
+
+        <!-- Hibernate Dialect -->
+
         <property name="hibernate.dialect">
-            org.hibernate.dialect.MySQLDialect
+            org.hibernate.dialect.MySQL8Dialect
         </property>
+
+
+        <!-- Automatically create/update tables -->
+
+        <property name="hibernate.hbm2ddl.auto">
+            update
+        </property>
+
+
+        <!-- Show SQL -->
 
         <property name="hibernate.show_sql">
             true
@@ -38,8 +51,12 @@
             true
         </property>
 
-        <!-- Entity -->
-        <mapping class="com.Naren.Employee"/>
+
+        <!-- Entity Mappings -->
+
+        <mapping class="com.Naren.Address"/>
+
+        <mapping class="com.Naren.Student"/>
 
     </session-factory>
 
