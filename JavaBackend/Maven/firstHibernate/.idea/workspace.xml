@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63ff9855-3cfc-4beb-bbf3-0e98aeb8d801" name="Changes" comment="project">
-      <change afterPath="$PROJECT_DIR$/../NewMavenProject/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NewMavenProject/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NewMavenProject/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../NewMavenProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NewMavenProject/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NewMavenProject/src/main/java/com/Naren/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NewMavenProject/src/main/resources/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

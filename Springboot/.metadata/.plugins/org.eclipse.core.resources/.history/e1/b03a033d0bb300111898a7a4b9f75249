@@ -1,0 +1,26 @@
+package com.example.demo;
+
+import java.awt.peer.LabelPeer;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import jdk.javadoc.internal.doclets.formats.html.resources.standard;
+
+@SpringBootApplication
+public class SpringFirstProjectApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext ref = SpringApplication.run(SpringFirstProjectApplication.class, args);
+		
+		Student st = ref.getBean(Student.class);
+		
+		st.study();
+		
+		  Laptop lp = ref.getBean(Laptop.class);
+		  
+		  lp.work();
+	}
+
+}
