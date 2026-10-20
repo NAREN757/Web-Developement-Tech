@@ -68,7 +68,10 @@ router.get(
     let { id } = req.params;
 
     const listing = await Listing.findById(id).populate("reviews");
-
+    if(!listing) {
+      req.flash("error","Listing you requested foe does not exist!");
+      res.redirect("/listings");
+    }
     res.render("listings/show.ejs", { listing });
   }),
 );
@@ -82,7 +85,7 @@ router.post(
     const newListing = new Listing(req.body.listing);
 
     await newListing.save();
-
+    req.flash("success","New Listing Created!");
     res.redirect("/listings");
   }),
 );
@@ -110,6 +113,7 @@ router.put(
 
     await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
+    req.flash("success","Listing Updated!");
     res.redirect(`/listings/${id}`);
   }),
 );
@@ -124,6 +128,7 @@ router.delete(
     let deletedListing = await Listing.findByIdAndDelete(id);
 
     console.log(deletedListing);
+    req.flash("success","Listing Deleted!");
 
     res.redirect("/listings");
   }),
