@@ -4,6 +4,7 @@ const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
 const User = require("../models/user.js");
 const passport = require("passport");
+const { saveRedirectUrl } = require("../middleware.js");
 
 // Signup Route
 router.get("/signup", (req, res) => {
@@ -20,7 +21,7 @@ router.post(
       const registeredUser = await User.register(newUser, password);
       console.log(registeredUser);
       req.login(registeredUser, (err) => {
-        if(err) {
+        if (err) {
           return next(err);
         }
         req.flash("success", "Welcome to PixelForge!");
@@ -40,13 +41,15 @@ router.get("/login", (req, res) => {
 // Login POST Route
 router.post(
   "/login",
+  saveRedirectUrl,
   passport.authenticate("local", {
     failureRedirect: "/login",
     failureFlash: true,
   }),
   async (req, res) => {
     req.flash("success", "Welcome back to PixelForge!");
-    res.redirect("/listings");
+    let redirectUrl = res.locals.redirectUrl || "/listings";
+    res.redirect(redirectUrl);
   },
 );
 
