@@ -1,0 +1,84 @@
+const Listing = require("../models/listing.js");
+const ExpressError = require("../utils/ExpressError.js");
+
+// Index Route
+module.exports.index = async (req, res) => {
+  let { page = 1 } = req.query;
+  const limit = 25;
+  page = Number(page);
+
+  // Invalid page number
+  if (page < 1 || !Number.isInteger(page)) {
+    throw new ExpressError(404, "Page Not Found!");
+  }
+
+  const totalListings = await Listing.countDocuments({});
+  const totalPages = Math.ceil(totalListings / limit);
+
+  // Page doesn't exist
+  if (page > totalPages && totalPages > 0) {
+    throw new ExpressError(404, "Page Not Found!");
+  }
+
+  const skip = (page - 1) * limit;
+
+  const allListings = await Listing.find({}).skip(skip).limit(limit);
+
+  res.render("listings/index.ejs", {
+    allListings,
+    totalListings,
+    totalPages,
+    currentPage: page,
+  });
+};
+
+module.exports.renderNewForm = (req, res) => {
+  res.render("listings/new.ejs");
+};
+
+module.exports.showListing = async (req, res) => {
+  let { id } = req.params;
+
+  const listing = await Listing.findById(id)
+    .populate({ path: "reviews", populate: { path: "author" } })
+    .populate("owner");
+  if (!listing) {
+    req.flash("error", "Listing you requested foe does not exist!");
+    res.redirect("/listings");
+  }
+  res.render("listings/show.ejs", { listing });
+};
+
+module.exports.createListing = async (req, res, next) => {
+  const newListing = new Listing(req.body.listing);
+  newListing.owner = req.user._id;
+  await newListing.save();
+  req.flash("success", "New Listing Created!");
+  res.redirect("/listings");
+};
+
+module.exports.renderEditForm = async (req, res) => {
+  let { id } = req.params;
+  const listing = await Listing.findById(id);
+  res.render("listings/edit.ejs", { listing });
+};
+
+module.exports.updateListing = async (req, res) => {
+  let { id } = req.params;
+
+  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+  req.flash("success", "Listing Updated!");
+  res.redirect(`/listings/${id}`);
+};
+
+module.exports.destroyListing = async (req, res) => {
+  let { id } = req.params;
+
+  let deletedListing = await Listing.findByIdAndDelete(id);
+
+  console.log(deletedListing);
+  req.flash("success", "Listing Deleted!");
+
+  res.redirect("/listings");
+};
