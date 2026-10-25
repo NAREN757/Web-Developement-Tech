@@ -198,27 +198,3 @@
   -webkit-transition: background-position 0.7s;
   transition: background-position 0.7s;
 }
-
-/* Reduce the size of selectable stars */
-.starability-slot {
-  transform: scale(0.75);
-  transform-origin: left top;
-  margin-bottom: -10px;
-}
-
-/* Reduce the size of stars shown in reviews */
-.starability-result {
-  transform: scale(0.65);
-  transform-origin: left center;
-}
-
-/* Keep the rating input stars at original size */
-.starability-slot {
-  transform: none;
-}
-
-/* Make only the stars displayed in reviews smaller */
-.starability-result {
-  transform: scale(0.65);
-  transform-origin: left center;
-}

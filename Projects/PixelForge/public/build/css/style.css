@@ -1,0 +1,563 @@
+/* ========================================
+   AETHERA COLOR PALETTE
+======================================== */
+:root {
+  --aethera-primary: #3368a0;
+  --aethera-secondary: #66a3bf;
+  --aethera-teal: #7d9d9c;
+  --aethera-teal-dark: #576f72;
+  --aethera-soft-teal: #c8dfdb;
+  --aethera-background: #f2efe7;
+  --aethera-surface: #ffffff;
+  --aethera-text: #252d35;
+  --aethera-muted: #59666c;
+  --aethera-border: #e5e9ec;
+  --aethera-danger: #d9534f;
+}
+
+/* GENERAL */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background: #fff;
+  color: var(--aethera-text);
+  font-family: "Plus Jakarta Sans", Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  flex: 1;
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* NAVBAR AND BRAND */
+.navbar {
+  min-height: 5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--aethera-border);
+}
+
+.navbar-brand,
+.brand-name {
+  color: var(--aethera-primary) !important;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.brand-name {
+  font-size: 1.35rem;
+}
+.navbar-brand .fa-solid {
+  color: var(--aethera-primary);
+  font-size: 1.65rem;
+}
+.navbar .nav-link {
+  color: var(--aethera-text) !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.navbar .nav-link:hover {
+  color: var(--aethera-primary) !important;
+}
+
+/* ICONS */
+.fa-solid {
+  color: var(--aethera-primary);
+}
+
+/* LISTING GRID AND CARDS */
+.listing-card {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border: none !important;
+  background: transparent;
+}
+.listing-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.card-img-top {
+  width: 100% !important;
+  height: 16rem !important;
+  border-radius: 0.85rem !important;
+  object-fit: cover !important;
+  transition: transform 0.25s ease;
+}
+.card-body {
+  padding: 0.8rem 0.15rem !important;
+}
+.card-title {
+  margin-bottom: 0.35rem;
+  color: var(--aethera-text);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+}
+.card-text {
+  margin-bottom: 0.35rem;
+  color: var(--aethera-muted);
+  font-size: 0.95rem;
+}
+.listing-card:hover .card-img-top {
+  transform: scale(1.015);
+}
+.listing-card:hover .card-title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* IMAGE HOVER OVERLAY */
+.card-img-overlay {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 16rem;
+  border-radius: 0.85rem;
+  background: rgba(51, 104, 160, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.listing-card:hover .card-img-overlay {
+  background: rgba(51, 104, 160, 0.12);
+  opacity: 1;
+}
+
+/* PRIMARY CREATE / EDIT / SUBMIT BUTTONS */
+.add-btn,
+.edit-btn {
+  border: 1px solid var(--aethera-primary) !important;
+  border-radius: 0.55rem !important;
+  background: var(--aethera-primary) !important;
+  color: #fff !important;
+  padding: 0.65rem 1.2rem !important;
+  transition: background-color 0.2s ease;
+}
+.add-btn:hover,
+.edit-btn:hover {
+  border-color: #285582 !important;
+  background: #285582 !important;
+}
+
+/* LISTING DETAILS */
+.showcard {
+  width: 40rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.showcard .card-img-top {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 40rem;
+  border-radius: 0.85rem !important;
+  object-fit: cover !important;
+}
+.btns {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.btns form {
+  display: inline-flex;
+  align-items: stretch;
+  margin: 0;
+}
+.btns .btn {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 16px !important;
+  border-radius: 8px !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* HEADINGS */
+.gdt {
+  text-align: center;
+}
+.allgames {
+  color: var(--aethera-text);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: -0.35px;
+}
+
+/* PAGINATION */
+.pagination .page-link {
+  border-color: var(--aethera-border);
+  color: var(--aethera-primary);
+}
+.pagination .page-item.active .page-link {
+  border-color: var(--aethera-primary);
+  background: var(--aethera-primary);
+  color: #fff;
+}
+.pagination .page-link:hover {
+  background: var(--aethera-background);
+  color: var(--aethera-teal-dark);
+}
+
+/* AETHERA UTILITY CLASSES */
+.aethera-bg {
+  background: var(--aethera-background);
+}
+.aethera-soft-teal {
+  background: var(--aethera-soft-teal);
+}
+.aethera-secondary-text {
+  color: var(--aethera-muted);
+}
+.aethera-link {
+  color: var(--aethera-primary);
+}
+.aethera-link:hover {
+  color: var(--aethera-teal-dark);
+}
+
+/* GUEST REVIEW CARDS */
+.review-card {
+  height: 100%;
+  padding: 16px;
+  border: 1px solid #dce2e8;
+  border-radius: 12px;
+  background: #fff;
+}
+.review-author {
+  margin-bottom: 8px;
+}
+.review-username {
+  color: var(--aethera-text);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  overflow-wrap: anywhere;
+}
+
+/* Starability's result artwork is normally 150 x 30px (five 30px stars).
+   Scale the complete sprite so all five stars remain visible. */
+.review-card .starability-result {
+  display: block;
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: none !important;
+  height: 30px !important;
+  margin: 6px 0 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  transform: scale(0.72);
+  transform-origin: left top;
+}
+.review-card .review-comment {
+  margin: 8px 0 12px !important;
+  color: var(--aethera-muted);
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.review-card form {
+  display: block;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+.review-card .delete-review-btn,
+.review-card form button.delete-review-btn {
+  display: inline-flex !important;
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: 30px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 4px 10px !important;
+  border: 1px solid var(--aethera-danger) !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+  color: var(--aethera-danger) !important;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.review-card .delete-review-btn:hover {
+  background: var(--aethera-danger) !important;
+  color: #fff !important;
+}
+
+/* FOOTER */
+.aethera-footer {
+  width: 100%;
+  margin-top: 3rem;
+  padding: 0 5%;
+  border-top: 1px solid #e5e5e5;
+  background: #f7f7f7;
+  color: var(--aethera-text);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.aethera-footer-inner {
+  display: flex;
+  min-height: 76px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 0;
+}
+.aethera-footer-left,
+.aethera-footer-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.aethera-footer-left {
+  font-size: 13px;
+}
+.aethera-footer-left a,
+.aethera-footer-right a {
+  color: var(--aethera-text);
+  text-decoration: none;
+}
+.aethera-footer-left a:hover,
+.aethera-footer-right a:hover {
+  color: var(--aethera-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-copyright {
+  white-space: nowrap;
+}
+.footer-dot {
+  color: #777;
+}
+.aethera-footer-right {
+  gap: 20px;
+}
+.footer-setting {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.footer-setting i {
+  color: inherit;
+  font-size: 15px;
+}
+.currency-symbol {
+  font-size: 17px;
+  font-weight: 600;
+}
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none !important;
+  color: var(--aethera-text);
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+.footer-socials a:hover {
+  color: var(--aethera-primary);
+}
+.footer-socials i {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-size: 17px;
+  line-height: 1;
+}
+.aethera-footer .f-info-socials a,
+.aethera-footer .f-info-socials a:hover,
+.aethera-footer .f-info-socials a:focus,
+.aethera-footer .f-info-socials a:visited {
+  border: none !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .aethera-footer {
+    padding: 0 4%;
+  }
+  .aethera-footer-inner {
+    padding: 22px 0;
+  }
+}
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 14rem !important;
+  }
+  .card-img-overlay {
+    height: 14rem;
+  }
+  .showcard {
+    width: 100%;
+  }
+  .btns {
+    gap: 0.4rem;
+  }
+  .review-card {
+    padding: 14px;
+  }
+  .review-username {
+    font-size: 16px;
+  }
+  .review-card .review-comment {
+    font-size: 14px;
+  }
+  .aethera-footer {
+    padding: 0 16px;
+  }
+  .aethera-footer-inner {
+    gap: 14px;
+  }
+  .aethera-footer-left,
+  .aethera-footer-right {
+    gap: 9px;
+  }
+  .footer-socials {
+    gap: 18px;
+  }
+}
+
+.listing-description {
+  color: #59666c;
+  font-size: 1rem;
+  line-height: 1.75;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  margin: 0 0 1.5rem;
+}
+
+/* ========================================
+   AETHERA PAGINATION
+======================================== */
+
+.aethera-pagination {
+  margin: 36px 0 48px;
+}
+
+.aethera-pagination .pagination {
+  gap: 6px;
+}
+
+.aethera-pagination .page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  min-width: 40px;
+  padding: 9px 13px;
+  border: 1px solid #dce2e8;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #3368a0;
+  font-size: 14px;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.aethera-pagination .page-item.active .page-link {
+  border-color: #3368a0;
+  background-color: #3368a0;
+  color: #fff;
+}
+
+.aethera-pagination .page-link:hover {
+  border-color: #c8dfdb;
+  background-color: #c8dfdb;
+  color: #183b36;
+}
+
+.aethera-pagination .page-item.disabled .page-link {
+  border-color: #e5e7eb;
+  background-color: #f5f6f7;
+  color: #a0a7ad;
+  pointer-events: none;
+}
+
+.aethera-pagination .page-link:focus-visible {
+  outline: 2px solid #3368a0;
+  outline-offset: 3px;
+}
+
+@media (max-width: 576px) {
+  .aethera-pagination .pagination {
+    gap: 4px;
+  }
+
+  .aethera-pagination .page-link {
+    min-height: 36px;
+    min-width: 36px;
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+}
+
+
+
+/* Aethera listing location map */
+.listing-map-section {
+  margin-top: 2rem;
+}
+
+#listing-map {
+  width: 100%;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  background: #f2efe7;
+}
+
+@media (max-width: 768px) {
+  #listing-map {
+    height: 280px;
+  }
+}

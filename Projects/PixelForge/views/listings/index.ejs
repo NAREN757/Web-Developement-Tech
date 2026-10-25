@@ -1,127 +1,144 @@
-<% layout('/layouts/boilerplate') -%>
 
-<br>
+<% layout("/layouts/boilerplate") -%>
 
-<h3 class="allgames">All games</h3>
+<!-- Page Heading -->
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2 mt-4 mb-4">
+  <div>
+    <p class="text-uppercase text-muted small fw-semibold mb-2">
+      Find your next escape
+    </p>
 
-<br>
+    <h2 class="allgames mb-2">Discover your next stay</h2>
 
-<p class="text-muted fs-6">
-  Showing
-  <%= allListings.length %>
-  of
-  <%= totalListings %>
-  results.
-</p>
+    <p class="text-muted mb-0">
+      Explore unique homes and memorable places around the world.
+    </p>
+  </div>
 
-<br>
+  <p class="text-muted mb-1">
+    Showing <strong><%= allListings.length %></strong>
+    of <strong><%= totalListings %></strong> stays
+  </p>
+</div>
 
+<!-- Accommodation Cards -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
 
-<!-- Games -->
-
-<div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 g-5">
-
-  <% for(let listing of allListings) { %>
-
+  <% for (let listing of allListings) { %>
     <div class="col">
-
-      <a
-        href="/listings/<%= listing._id %>"
-        class="listing-link"
-      >
-
-        <div class="card listing-card">
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card listing-card h-100">
 
           <img
             src="<%= listing.image %>"
             class="card-img-top"
-            alt="Listings_image"
-            style="height: 16rem"
+            alt="<%= listing.title %>"
+            loading="lazy"
           >
 
           <div class="card-img-overlay"></div>
 
           <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start gap-2">
+              <h5 class="card-title mb-1">
+                <%= listing.title %>
+              </h5>
 
-            <h5 class="card-title">
-              <b><%= listing.title %></b>
-            </h5>
+              <span class="text-muted small flex-shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </span>
+            </div>
 
-            <p class="card-text">
-              Rs <%= listing.price.toLocaleString("en-IN") %>
+            <p class="text-muted mb-2">
+              <%= listing.location %><% if (listing.country) { %>, <%= listing.country %><% } %>
             </p>
 
+            <!-- Price in INR -->
+            <p class="card-text mb-0">
+              <strong>
+                <%= Number(listing.price).toLocaleString("en-IN", {
+                  style: "currency",
+                  currency: "INR",
+                  maximumFractionDigits: 0
+                }) %>
+              </strong>
+              <span class="text-muted">per night</span>
+            </p>
           </div>
 
         </div>
-
       </a>
-
     </div>
-
   <% } %>
 
 </div>
 
-
-<br>
-<br>
-
+<!-- Empty State -->
+<% if (allListings.length === 0) { %>
+  <div class="text-center py-5">
+    <i class="fa-solid fa-house fa-2x mb-3"></i>
+    <h4>No stays available yet</h4>
+    <p class="text-muted">
+      Check back soon or add the first property to Aethera.
+    </p>
+  </div>
+<% } %>
 
 <!-- Pagination -->
 <% if (totalPages > 1) { %>
-  <nav aria-label="Game pages">
-    <ul class="pagination justify-content-center">
-      <!-- Previous -->
-      <% if (currentPage > 1) { %>
-        <li class="page-item">
+  <nav
+    class="aethera-pagination"
+    aria-label="Accommodation pages"
+  >
+    <ul class="pagination justify-content-center align-items-center flex-wrap">
+
+      <!-- Previous Page -->
+      <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+        <% if (currentPage > 1) { %>
           <a
             class="page-link"
             href="/listings?page=<%= currentPage - 1 %>"
+            aria-label="Previous page"
           >
-            Previous
+            &laquo; Previous
           </a>
-        </li>
-      <% } else { %>
-        <li class="page-item disabled">
-          <span class="page-link">
-            Previous
-          </span>
-        </li>
-      <% } %>
+        <% } else { %>
+          <span class="page-link">&laquo; Previous</span>
+        <% } %>
+      </li>
 
       <!-- Page Numbers -->
-      <% for(let i = 1; i <= totalPages; i++) { %>
-        <li
-          class="page-item <%= currentPage === i ? 'active' : '' %>"
-        >
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <li class="page-item <%= currentPage === i ? 'active' : '' %>">
           <a
             class="page-link"
             href="/listings?page=<%= i %>"
+            <%= currentPage === i ? 'aria-current="page"' : '' %>
           >
             <%= i %>
           </a>
         </li>
       <% } %>
 
-      <!-- Next -->
-      <% if (currentPage < totalPages) { %>
-        <li class="page-item">
+      <!-- Next Page -->
+      <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+        <% if (currentPage < totalPages) { %>
           <a
             class="page-link"
             href="/listings?page=<%= currentPage + 1 %>"
+            aria-label="Next page"
           >
-            Next
+            Next &raquo;
           </a>
-        </li>
-      <% } else { %>
-        <li class="page-item disabled">
-          <span class="page-link">
-            Next
-          </span>
-        </li>
-      <% } %>
+        <% } else { %>
+          <span class="page-link">Next &raquo;</span>
+        <% } %>
+      </li>
+
     </ul>
+
+    <p class="text-muted text-center small mt-3 mb-0">
+      Page <%= currentPage %> of <%= totalPages %>
+    </p>
   </nav>
 <% } %>
-<br>

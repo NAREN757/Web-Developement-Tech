@@ -1,0 +1,4 @@
+// __vite-optional-peer-dep:jiti:vite
+var e = {};
+throw Error("Could not resolve \"jiti\" imported by \"vite\". Is it installed?");
+export { e as default };

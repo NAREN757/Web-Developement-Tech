@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:maps": "vite build"
   },
   "keywords": [],
   "author": "Narendra",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@tomtom-org/maps-sdk": "^1.0.0-rc.5",
+    "cloudinary": "^2.11.0",
     "connect-flash": "^0.1.1",
+    "dotenv": "^18.0.9",
     "ejs": "^6.0.1",
     "ejs-mate": "^4.0.0",
     "express": "^5.2.1",
@@ -20,8 +24,12 @@
     "joi": "^18.2.5",
     "method-override": "^3.0.0",
     "mongoose": "^9.9.3",
+    "multer": "^2.5.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^9.2.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.5"
   }
 }

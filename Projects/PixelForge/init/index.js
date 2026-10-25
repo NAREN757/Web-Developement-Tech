@@ -2,30 +2,33 @@ const mongoose = require("mongoose");
 const data = require("./data.js");
 const Listing = require("../models/listing.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/pixelforge";
-
-main()
-  .then(() => {
-    console.log("Connected to DB");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+const MONGO_URL = "mongodb://127.0.0.1:27017/aethera";
+const OWNER_ID = "6addb9a5e5b670bdfcda8f99";
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  try {
+    await mongoose.connect(MONGO_URL);
+    console.log("Connected to Aethera DB");
+
+    // Delete existing listings from Aethera
+    await Listing.deleteMany({});
+
+    // Assign the new owner to every listing
+    const initData = data.data.map((obj) => ({
+      ...obj,
+      owner: OWNER_ID,
+    }));
+
+    // Insert the updated listings
+    await Listing.insertMany(initData);
+
+    console.log(`${initData.length} Aethera listings initialized`);
+  } finally {
+    await mongoose.disconnect();
+  }
 }
 
-const initDB = async () => {
-  await Listing.deleteMany({});
-
-  const initData = data.data.map((obj) => ({
-    ...obj,
-    owner: "6adc246ff3e1fa1e70b890c7",
-  }));
-
-  await Listing.insertMany(initData);
-  console.log("Data was initialized");
-};
-
-initDB();
+main().catch((err) => {
+  console.error("Database initialization failed:", err);
+  process.exitCode = 1;
+});

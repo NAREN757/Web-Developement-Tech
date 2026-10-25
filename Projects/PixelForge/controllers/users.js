@@ -23,7 +23,7 @@ module.exports.signup = async (req, res, next) => {
         return next(err);
       }
 
-      req.flash("success", "Welcome to PixelForge!");
+      req.flash("success", "Welcome to Aethera!");
       res.redirect("/listings");
     });
   } catch (e) {
@@ -34,7 +34,7 @@ module.exports.signup = async (req, res, next) => {
 
 // Login
 module.exports.login = (req, res) => {
-  req.flash("success", "Welcome back to PixelForge!");
+  req.flash("success", "Welcome back to Aethera!");
 
   const redirectUrl = res.locals.redirectUrl || "/listings";
   res.redirect(redirectUrl);

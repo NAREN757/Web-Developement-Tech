@@ -1,70 +1,149 @@
-<% layout('/layouts/boilerplate') -%>
-<body>
-    <div class="row">
-        <div class="col-8 offset-2">
-            <br><br>
-    <h3>Edit Game Details</h3>
-    <br>
-    <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
-        <div class="mb-3">
-            <label for="title" class="form-label">Game Title</label>
-            <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required>
-             <div class="valid-feedback">Title looks Good!</div>
-       <div class="invalid-feedback">
-        Game title is required.
+<% layout("/layouts/boilerplate") -%>
+
+<div class="row">
+  <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+    <div class="my-4">
+      <h3>Edit Your Stay</h3>
+      <p class="text-muted">Update your property's details on Aethera.</p>
+    </div>
+
+    <form
+      method="POST"
+      action="/listings/<%= listing._id %>?_method=PUT"
+      novalidate
+      class="needs-validation"
+    >
+      <!-- Property Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Property Name</label>
+        <input
+          id="title"
+          name="listing[title]"
+          value="<%= listing.title %>"
+          type="text"
+          class="form-control"
+          placeholder="e.g. Lakefront Luxury Villa"
+          required
+        />
+        <div class="valid-feedback">Property name looks good!</div>
+        <div class="invalid-feedback">Please enter a property name.</div>
       </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          id="description"
+          name="listing[description]"
+          class="form-control"
+          rows="5"
+          placeholder="Describe the property and what makes it special."
+          required
+        >
+<%= listing.description %></textarea
+        >
+        <div class="valid-feedback">Description looks good!</div>
+        <div class="invalid-feedback">Please describe the property.</div>
+      </div>
+
+      <!-- Image URL -->
+      <div class="mb-3">
+        <label for="image" class="form-label">Property Image URL</label>
+        <input
+          id="image"
+          name="listing[image]"
+          value="<%= listing.image %>"
+          type="url"
+          class="form-control"
+          placeholder="https://example.com/property.jpg"
+          required
+        />
+        <div class="valid-feedback">Image URL looks good!</div>
+        <div class="invalid-feedback">Please enter a valid image URL.</div>
+      </div>
+
+      <div class="row">
+        <!-- Nightly Price -->
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price per Night (INR)</label>
+          <input
+            id="price"
+            name="listing[price]"
+            value="<%= listing.price %>"
+            type="number"
+            min="1"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Price looks good!</div>
+          <div class="invalid-feedback">Enter a valid nightly price.</div>
         </div>
 
+        <!-- Location -->
+        <div class="mb-3 col-md-4">
+          <label for="location" class="form-label">City or Location</label>
+          <input
+            id="location"
+            name="listing[location]"
+            value="<%= listing.location %>"
+            type="text"
+            class="form-control"
+            placeholder="e.g. Queenstown"
+            required
+          />
+          <div class="valid-feedback">Location looks good!</div>
+          <div class="invalid-feedback">Please enter a location.</div>
+        </div>
+
+        <!-- Country -->
+        <div class="mb-3 col-md-4">
+          <label for="country" class="form-label">Country</label>
+          <input
+            id="country"
+            name="listing[country]"
+            value="<%= listing.country %>"
+            type="text"
+            class="form-control"
+            placeholder="e.g. New Zealand"
+            required
+          />
+          <div class="valid-feedback">Country looks good!</div>
+          <div class="invalid-feedback">Please enter a country.</div>
+        </div>
+      </div>
+
+      <!-- Property Address for TomTom Geocoding -->
       <div class="mb-3">
-        <label for="description" class="form-label" >Game Overview</label>
-        <textarea name="listing[description]" class="form-control" required><%= listing.description%></textarea>
-        <div class="valid-feedback">Overview looks Good!</div>
-       <div class="invalid-feedback">
-        Please provide a brief description of the game.
-      </div>
+        <label for="address" class="form-label">Full Property Address</label>
+        <input
+          id="address"
+          name="listing[address]"
+          type="text"
+          class="form-control"
+          value="<%= listing.address || '' %>"
+          placeholder="Street address, city, state, country"
+          required
+        />
+        <div class="form-text">
+          Update the full address to refresh the property's map location.
+        </div>
+        <div class="invalid-feedback">
+          Please enter the property's full address.
+        </div>
       </div>
 
-      <div class="mb-3">
-        <label for="image" class="form-label">Cover Art</label>
-        <input name="listing[image]" value="<%= listing.image %>" type="text" class="form-control" required>
-        <div class="valid-feedback">URL looks Good!</div>
-       <div class="invalid-feedback">
-        Please provide a Valid URL for cover art.
-      </div>
-      </div>
+      <div class="d-flex gap-2 mt-4 mb-5">
+        <button type="submit" class="btn btn-dark edit-btn">
+          Save Changes
+        </button>
 
-    <div class="row">
-      <div class="mb-3 col-md-4">
-        <label for="price" class="form-label">Price</label>
-        <input name="listing[price]" value="<%= listing.price %>"" type="number" class="form-control" required>
-        <div class="valid-feedback">Price looks Good!</div>
-         <div class="invalid-feedback">
-        Please enter a valid price.
+        <a
+          href="/listings/<%= listing._id %>"
+          class="btn btn-outline-secondary"
+        >
+          Cancel
+        </a>
       </div>
-      </div>
-      
-       <div class="mb-3 col-md-8">
-        <label for="genre" class="form-label">Game Genre</label>
-        <input name="listing[genre]" value="<%= listing.genre %>" type="text" class="form-control" required>
-        <div class="valid-feedback">Genre looks Good!</div>
-       <div class="invalid-feedback">
-        Game genre is required.
-      </div>
-      </div>
-    </div>
-
-    <div class="mb-3">
-        <label for="developer" class="form-label">Development Studio</label>
-      <input name="listing[developer]" value="<%= listing.developer %> "type="text" class="form-control" required>
-      <div class="valid-feedback">Studio looks Good!</div>
-       <div class="invalid-feedback">
-        Development studio is required.
-      </div>
-    </div>
-      <br>
-      <button class="btn btn-dark edit-btn">Edit</button>
     </form>
-    <br>
-</body>
-</div>
+  </div>
 </div>

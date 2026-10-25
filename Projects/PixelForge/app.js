@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -15,57 +19,62 @@ const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/pixelforge";
+// Aethera database
+const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/aethera";
 
 main()
   .then(() => {
-    console.log("Connected to DB");
+    console.log("Connected to Aethera database");
+    app.listen(process.env.PORT || 3000, () => {
+      console.log(
+        `Aethera server is running on port ${process.env.PORT || 3000}`,
+      );
+    });
   })
   .catch((err) => {
-    console.log(err);
+    console.error("Database connection failed:", err);
+    process.exit(1);
   });
 
 async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
+// EJS configuration
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
-
 app.engine("ejs", ejsMate);
 
-app.use(express.static(path.join(__dirname, "/public")));
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "public")));
 
+// Session configuration
 const sessionOptions = {
-  secret: "mysupersecretcode",
+  secret: process.env.SESSION_SECRET || "development-secret-change-me",
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
-    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
   },
 };
-
-// Home Route
-app.get("/", (req, res) => {
-  res.send("Hell, I am root");
-});
 
 app.use(session(sessionOptions));
 app.use(flash());
 
+// Passport configuration
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
 
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Make flash messages available to EJS
+// Make data available to EJS templates
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
@@ -73,23 +82,25 @@ app.use((req, res, next) => {
   next();
 });
 
+// Home page
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
+// Application routes
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
-app.use("/",userRouter);
+app.use("/", userRouter);
 
-// 404 Route
+// 404 handler
 app.all("/{*splat}", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
 });
 
-// Error Handler
+// Error handler
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something went wrong!" } = err;
+  const { statusCode = 500 } = err;
+  const message = statusCode === 500 ? "Something went wrong!" : err.message;
 
   res.status(statusCode).render("error.ejs", { message });
-});
-
-// Server
-app.listen(3000, () => {
-  console.log("Server is listening to port 3000");
 });
