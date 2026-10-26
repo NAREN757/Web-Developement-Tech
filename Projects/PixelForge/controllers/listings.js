@@ -1,3 +1,4 @@
+
 const Listing = require("../models/listing.js");
 const ExpressError = require("../utils/ExpressError.js");
 
@@ -10,7 +11,7 @@ async function geocodeAddress(address) {
   }
 
   const url = new URL(
-    `https://api.tomtom.com/search/2/geocode/${encodeURIComponent(address)}.json`,
+    `https://api.tomtom.com/search/2/geocode/${encodeURIComponent(address)}.json`
   );
 
   url.searchParams.set("key", apiKey);
@@ -28,7 +29,7 @@ async function geocodeAddress(address) {
   if (!result?.position) {
     throw new ExpressError(
       400,
-      "No matching location found. Please enter a more specific address.",
+      "No matching location found. Please enter a more specific address."
     );
   }
 
@@ -62,7 +63,10 @@ module.exports.index = async (req, res) => {
 
   if (searchTerm) {
     // Escape special regex characters entered by the user
-    const escapedSearch = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const escapedSearch = searchTerm.replace(
+      /[.*+?^${}()|[\]\\]/g,
+      "\\$&"
+    );
 
     const searchRegex = new RegExp(escapedSearch, "i");
 
@@ -190,7 +194,7 @@ module.exports.updateListing = async (req, res) => {
     {
       runValidators: true,
       new: true,
-    },
+    }
   );
 
   if (!listing) {

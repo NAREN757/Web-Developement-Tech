@@ -23,6 +23,12 @@ const reviewSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+
+  // Identifies reviews generated for development/demo purposes
+  isDemo: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("Review", reviewSchema);

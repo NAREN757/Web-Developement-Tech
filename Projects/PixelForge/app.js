@@ -10,6 +10,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo").default;
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -20,7 +21,8 @@ const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 // Aethera database
-const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/aethera";
+// const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/aethera";
+const dburl = process.env.ATLASDB_URL;
 
 main()
   .then(() => {
@@ -37,7 +39,7 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dburl);
 }
 
 // EJS configuration
@@ -50,8 +52,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
+const store = MongoStore.create({
+  mongoUrl: dburl,
+  crypto: {
+    secret: "narendra",
+  },
+  touchAfter: 24 * 3600,
+});
+
+store.on("error", () => {
+  console.log("Error in MONGO SESSION STORE", err);
+});
+
 // Session configuration
 const sessionOptions = {
+  store,
   secret: process.env.SESSION_SECRET || "development-secret-change-me",
   resave: false,
   saveUninitialized: false,

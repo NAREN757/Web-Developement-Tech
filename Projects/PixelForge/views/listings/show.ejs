@@ -193,12 +193,15 @@
         <% for (const review of listing.reviews) { %>
           <div class="col-md-6">
             <div class="review-card h-100">
+
+              <!-- Reviewer Information -->
               <div class="review-author">
                 <span class="review-username">
                   @<%= review.author ? review.author.username : "Guest" %>
                 </span>
               </div>
 
+              <!-- Star Rating -->
               <p
                 class="starability-result"
                 data-rating="<%= review.rating %>"
@@ -207,7 +210,19 @@
                 Rated <%= review.rating %> out of 5 stars
               </p>
 
+              <!-- Review Comment -->
               <p class="review-comment"><%= review.comment %></p>
+
+              <!-- Review Date -->
+              <% if (review.createdAt) { %>
+                <small class="text-muted">
+                  <%= new Date(review.createdAt).toLocaleDateString("en-IN", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric"
+                  }) %>
+                </small>
+              <% } %>
 
               <!-- Delete Own Review -->
               <% if (
@@ -225,6 +240,7 @@
                   </button>
                 </form>
               <% } %>
+
             </div>
           </div>
         <% } %>
