@@ -38,9 +38,9 @@ async function geocodeAddress(address) {
   };
 }
 
-// Index Route — Display all listings with pagination
+// Index Route — Search, category filtering, and pagination
 module.exports.index = async (req, res) => {
-  let { page = 1 } = req.query;
+  let { page = 1, category, search } = req.query;
   page = Number(page);
 
   const limit = 16;
@@ -49,7 +49,33 @@ module.exports.index = async (req, res) => {
     throw new ExpressError(404, "Page Not Found!");
   }
 
-  const totalListings = await Listing.countDocuments({});
+  // Build the filter query
+  const filter = {};
+
+  // Category filter
+  if (category) {
+    filter.category = category;
+  }
+
+  // Search by title, location, country, or description
+  const searchTerm = typeof search === "string" ? search.trim() : "";
+
+  if (searchTerm) {
+    // Escape special regex characters entered by the user
+    const escapedSearch = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    const searchRegex = new RegExp(escapedSearch, "i");
+
+    filter.$or = [
+      { title: searchRegex },
+      { location: searchRegex },
+      { country: searchRegex },
+      { description: searchRegex },
+    ];
+  }
+
+  // Count listings matching the category and search filters
+  const totalListings = await Listing.countDocuments(filter);
   const totalPages = Math.ceil(totalListings / limit);
 
   if (page > totalPages && totalPages > 0) {
@@ -58,7 +84,8 @@ module.exports.index = async (req, res) => {
 
   const skip = (page - 1) * limit;
 
-  const allListings = await Listing.find({})
+  // Fetch filtered listings
+  const allListings = await Listing.find(filter)
     .populate("owner")
     .skip(skip)
     .limit(limit);
@@ -68,6 +95,8 @@ module.exports.index = async (req, res) => {
     totalListings,
     totalPages,
     currentPage: page,
+    category,
+    search: searchTerm,
   });
 };
 

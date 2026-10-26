@@ -1,8 +1,47 @@
 
+<style>
+  
+.btn-search {
+  background-color: #3368a0;
+  color: white;
+  border: 1px solid #66a3bf;
+  border-radius: 25px;
+  padding: 0 1rem;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  line-height: normal;
+}
+
+.search-input {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+  }
+
+.btn-search i {
+  display: inline-block !important;
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+
+.btn-search:hover,
+.btn-search:focus,
+.btn-search:active {
+  background-color: #3368a0 !important;
+  color: white !important;
+  border-color: #66a3bf !important;
+  box-shadow: none !important;
+}
+
+</style>
+
 <nav class="navbar navbar-expand-lg border-bottom sticky-top">
   <div class="container-fluid px-4">
     <a class="navbar-brand d-flex align-items-center gap-2" href="/">
-       <i class="fa-brands fa-airbnb fa-2x"></i>
+      <i class="fa-brands fa-airbnb fa-2x"></i>
       <span class="brand-name">aethera</span>
     </a>
 
@@ -20,20 +59,45 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-lg-4">
-        <a class="nav-link" href="/">Home</a>
         <a class="nav-link" href="/listings">Explore Stays</a>
+
         <% if (currUser) { %>
           <a class="nav-link" href="/listings/new">List Your Property</a>
         <% } %>
       </div>
 
       <div class="navbar-nav ms-auto">
+        <form
+          class="d-flex"
+          action="/listings"
+          method="GET"
+          role="search"
+        >
+          <input
+            class="form-control me-2 search-input"
+            type="search"
+            name="search"
+            placeholder="Search Stays"
+            aria-label="Search stays"
+            value="<%= typeof search !== 'undefined' ? search : '' %>"
+          />
+
+          <button class="btn btn-search" type="submit">
+            <i class="fa-solid fa-magnifying-glass" style="color: rgb(255, 255, 255);"></i>
+            Search
+          </button>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto">
         <% if (!currUser) { %>
-          <a class="nav-link" href="/signup">Sign Up</a>
-          <a class="nav-link" href="/login">Log In</a>
+          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+          <a class="nav-link" href="/login"><b>Log In</b></a>
         <% } else { %>
-          <span class="nav-link">Welcome, <%= currUser.username %></span>
-          <a class="nav-link" href="/logout">Log Out</a>
+          <span class="nav-link">
+            <b>Welcome</b>, <%= currUser.username %>
+          </span>
+          <a class="nav-link" href="/logout"><b>Log Out</b></a>
         <% } %>
       </div>
     </div>

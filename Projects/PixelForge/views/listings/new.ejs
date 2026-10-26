@@ -103,6 +103,30 @@
         </div>
       </div>
 
+      <div class="mb-3">
+        <label for="category" class="form-label"> Property Category </label>
+
+        <select
+          id="category"
+          name="listing[category]"
+          class="form-select"
+          required
+        >
+          <option value="" selected disabled>Select a category</option>
+
+          <option value="rooms">Rooms</option>
+          <option value="mountains">Mountains</option>
+          <option value="cities">Cities</option>
+          <option value="castles">Castles</option>
+          <option value="pools">Pools</option>
+          <option value="camps">Camps</option>
+          <option value="farms">Farms</option>
+          <option value="boats">Boats</option>
+          <option value="igloos">Igloos</option>
+          <option value="trees">Trees</option>
+        </select>
+      </div>
+
       <!-- Property Address for TomTom Geocoding -->
       <div class="mb-3">
         <label for="address" class="form-label">Full Property Address</label>

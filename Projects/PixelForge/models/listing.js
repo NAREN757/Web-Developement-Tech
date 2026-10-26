@@ -40,6 +40,24 @@ const listingSchema = new Schema({
     required: true,
   },
 
+  // Property category used for filtering
+  category: {
+    type: String,
+    enum: [
+      "rooms",
+      "mountains",
+      "cities",
+      "castles",
+      "pools",
+      "camps",
+      "farms",
+      "boats",
+      "igloos",
+      "trees",
+    ],
+    required: true,
+  },
+
   // Full property address used for geocoding
   address: {
     type: String,

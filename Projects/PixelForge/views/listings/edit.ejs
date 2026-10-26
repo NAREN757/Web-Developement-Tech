@@ -112,6 +112,76 @@
         </div>
       </div>
 
+
+<div class="mb-3">
+  <label for="category" class="form-label">
+    Property Category
+  </label>
+
+  <select
+    id="category"
+    name="listing[category]"
+    class="form-select"
+    required
+  >
+    <option value="" disabled
+      <%= !listing.category ? "selected" : "" %>>
+      Select a category
+    </option>
+
+    <option value="rooms"
+      <%= listing.category === "rooms" ? "selected" : "" %>>
+      Rooms
+    </option>
+
+    <option value="mountains"
+      <%= listing.category === "mountains" ? "selected" : "" %>>
+      Mountains
+    </option>
+
+    <option value="cities"
+      <%= listing.category === "cities" ? "selected" : "" %>>
+      Cities
+    </option>
+
+    <option value="castles"
+      <%= listing.category === "castles" ? "selected" : "" %>>
+      Castles
+    </option>
+
+    <option value="pools"
+      <%= listing.category === "pools" ? "selected" : "" %>>
+      Pools
+    </option>
+
+    <option value="camps"
+      <%= listing.category === "camps" ? "selected" : "" %>>
+      Camps
+    </option>
+
+    <option value="farms"
+      <%= listing.category === "farms" ? "selected" : "" %>>
+      Farms
+    </option>
+
+    <option value="boats"
+      <%= listing.category === "boats" ? "selected" : "" %>>
+      Boats
+    </option>
+
+    <option value="igloos"
+      <%= listing.category === "igloos" ? "selected" : "" %>>
+      Igloos
+    </option>
+
+    <option value="trees"
+      <%= listing.category === "trees" ? "selected" : "" %>>
+      Trees
+    </option>
+  </select>
+</div>
+
+
       <!-- Property Address for TomTom Geocoding -->
       <div class="mb-3">
         <label for="address" class="form-label">Full Property Address</label>
